@@ -84,7 +84,7 @@ class FuelCalculatorRestResource extends ResourceBase {
     FuelCalculatorService $calculator,
     RequestStack $request_stack,
     AccountProxyInterface $current_user,
-    LoggerChannelFactoryInterface $logger_factory,
+    LoggerChannelFactoryInterface $logger_factory
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->calculator = $calculator;
@@ -154,7 +154,7 @@ class FuelCalculatorRestResource extends ResourceBase {
    * @return string|true
    *   TRUE if valid, error message if invalid.
    */
-  protected function validateInput(array $data): string|true {
+  protected function validateInput(array $data) {
     $required_fields = ['distance', 'fuel_consumption', 'fuel_price'];
 
     // Check for required fields.
