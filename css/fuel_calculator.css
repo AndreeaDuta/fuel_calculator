@@ -1,0 +1,152 @@
+:root {
+  --fc-bg: #e6e6e6;
+  --fc-box-bg: #bfbfbf;
+  --fc-font: Arial, sans-serif;
+  --fc-font-size: 0.875rem;
+  --fc-label-size: 1rem;
+  --fc-label-weight: bold;
+  --fc-input-bg: #fff;
+  --fc-input-border: #888;
+  --fc-input-radius: 0px;
+  --fc-btn-bg: #edf0f2;
+  --fc-btn-color: #5f6163;
+  --fc-btn-radius: 5px;
+  --fc-btn-border: #edf0f2;
+  --fc-btn-hover-bg: none;
+  --fc-btn-hover-color: #edf0f2;
+  --fc-btn-hover-border: #edf0f2;
+  --fc-row-gap: 10px;
+  --fc-row-margin: 0;
+  --fc-results-padding: 5px 30px;
+  --fc-results-column-gap: 30px;
+  --fc-results-row-gap: 5px;
+  --fc-results-radius: 0px;
+  --fc-actions-gap: 20px;
+}
+
+/* Main form container */
+.fuel-calculator-form {
+  width: 328px;
+  background-color: var(--fc-bg);
+}
+
+.fuel-calculator-form * {
+  font-family: var(--fc-font);
+  font-size: var(--fc-font-size);
+}
+
+@media only screen and (max-width: 400px) {
+  .fuel-calculator-form {
+    width: 100%;
+  }
+}
+
+/* Boxed container for all fields and results */
+.fuel-calculator-box {
+  padding: 10px 20px;
+}
+
+/* Form rows */
+.fuel-row.form-item {
+  display: grid;
+  grid-template-columns: 42% 25% 19%;
+  align-items: center;
+  margin: var(--fc-row-margin);
+  gap: var(--fc-row-gap);
+}
+
+/* Labels */
+.form-item__label {
+  font-size: var(--fc-label-size);
+  font-weight: var(--fc-label-weight);
+  text-align: left;
+}
+
+.form-item__label[for] {
+  cursor: auto;
+  text-align: right;
+}
+
+/* Number inputs */
+.fuel-input[type="number"] {
+  font-weight: var(--fc-label-weight);
+  width: 100%;
+  min-height: 30px;
+  padding: 4px;
+  text-align: center;
+}
+
+.fuel-input[type="number"]::-webkit-outer-spin-button,
+.fuel-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.fuel-input[type="number"]:focus {
+  border: 1px solid var(--fc-input-border);
+  outline: none;
+}
+
+.fuel-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Field suffix */
+.field-suffix {
+  font-weight: var(--fc-label-weight);
+}
+
+/* Results Section */
+.fuel-calculator-results-box {
+  background-color: var(--fc-box-bg);
+  padding: var(--fc-results-padding);
+  margin-top: 10px;
+  font-weight: var(--fc-label-weight);
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: var(--fc-results-row-gap);
+  column-gap: var(--fc-results-column-gap);
+}
+
+/* Results alignment */
+.fuel-label {
+  text-align: right;
+}
+.fuel-value {
+  text-align: center;
+}
+.fuel-unit {
+  text-align: left;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  background-color: #666;
+  padding: 15px;
+  gap: var(--fc-actions-gap);
+}
+
+.form-actions .button {
+  font-size: var(--fc-font-size);
+  font-weight: 400;
+  color: var(--fc-btn-color);
+  height: auto;
+  background-color: var(--fc-btn-bg);
+  border: 1px solid var(--fc-btn-border);
+  padding: 8px 15px;
+  border-radius: var(--fc-btn-radius);
+  cursor: pointer;
+  margin: 0;
+}
+
+.form-actions .button:hover,
+.form-actions .button:focus,
+.form-actions .button:active {
+  font-weight: 400;
+  background: var(--fc-btn-hover-bg);
+  border: 1px solid var(--fc-btn-hover-border);
+  color: var(--fc-btn-hover-color);
+  outline: none;
+}

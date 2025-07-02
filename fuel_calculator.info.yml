@@ -1,0 +1,7 @@
+name: 'Fuel Calculator'
+type: module
+description: 'A configurable fuel cost calculator with REST API and logging.'
+core_version_requirement: '^10 || ^11'
+package: Custom
+dependencies:
+  - drupal:rest 

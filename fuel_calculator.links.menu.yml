@@ -1,0 +1,6 @@
+fuel_calculator.menu:
+  title: 'Fuel Calculator'
+  description: 'Calculate your fuel costs'
+  route_name: fuel_calculator.page
+  parent: system.main_menu
+  weight: 0 

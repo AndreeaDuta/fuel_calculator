@@ -1,0 +1,5 @@
+fuel_calculator.styles:
+  version: 1.x
+  css:
+    theme:
+      css/fuel_calculator.css: {} 
