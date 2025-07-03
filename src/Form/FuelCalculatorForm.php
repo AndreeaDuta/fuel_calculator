@@ -106,10 +106,22 @@ class FuelCalculatorForm extends FormBase {
     $config = $this->configFactory->get('fuel_calculator.settings');
     $request = $this->requestStack->getCurrentRequest();
 
-    // Prefill from URL or config.
-    $distance = $request->query->get('distance', $config->get('default_distance'));
-    $fuel_consumption = $request->query->get('fuel_consumption', $config->get('default_fuel_consumption'));
-    $fuel_price = $request->query->get('fuel_price', $config->get('default_fuel_price'));
+    // Detect a previous “Reset” submit.
+    $is_reset = $form_state->get('is_reset') ?? FALSE;
+
+    if ($is_reset) {
+      $distance = '';
+      $fuel_consumption = '';
+      $fuel_price = '';
+      // Unset the flag so it only affects this rebuild.
+      $form_state->set('is_reset', FALSE);
+    }
+    else {
+      // Prefill from URL or config (unchanged behaviour).
+      $distance = $request->query->get('distance', $config->get('default_distance'));
+      $fuel_consumption = $request->query->get('fuel_consumption', $config->get('default_fuel_consumption'));
+      $fuel_price = $request->query->get('fuel_price', $config->get('default_fuel_price'));
+    }
 
     $form['#attributes']['class'][] = 'fuel-calculator-form';
 
@@ -282,7 +294,7 @@ class FuelCalculatorForm extends FormBase {
   }
 
   /**
-   * Resets the form to default values.
+   * Resets the form by clearing all values and results.
    *
    * @param array $form
    *   The form array.
@@ -290,7 +302,17 @@ class FuelCalculatorForm extends FormBase {
    *   The form state.
    */
   public function resetForm(array &$form, FormStateInterface $form_state): void {
-    $form_state->setRedirect('<current>');
+    // Mark the next rebuild so buildForm() knows we just pressed “Reset”.
+    $form_state->set('is_reset', TRUE);
+
+    // Clear results from form state.
+    $form_state->set('results', []);
+
+    // Clear user input so form fields are empty.
+    $form_state->setUserInput([]);
+
+    // Rebuild the form to show cleared state.
+    $form_state->setRebuild();
   }
 
 }
